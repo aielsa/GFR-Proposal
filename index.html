@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta — The AI Strategist | GFR Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f8f8fc;
+  --bg-card: #ffffff;
+  --text-primary: #111111;
+  --text-secondary: #555566;
+  --text-muted: #888899;
+  --purple: #7B3FE4;
+  --purple-light: #9B6BF0;
+  --purple-dim: rgba(123, 63, 228, 0.08);
+  --cyan: #00C9B7;
+  --blue: #4466FF;
+  --pink: #D946A8;
+  --border: rgba(123, 63, 228, 0.15);
+  --border-light: #eeeef2;
+  --gradient-brand: linear-gradient(135deg, #00C9B7, #4466FF, #7B3FE4, #D946A8);
+  --gradient-soft: linear-gradient(135deg, rgba(0,201,183,0.12), rgba(68,102,255,0.08), rgba(123,63,228,0.12), rgba(217,70,168,0.08));
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* ---- GRADIENT DECORATIONS ---- */
+.gradient-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #00C9B7, transparent 70%);
+  top: -100px; left: -100px;
+}
+
+.blob-2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #7B3FE4, transparent 70%);
+  top: 200px; right: -80px;
+}
+
+.blob-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #D946A8, transparent 70%);
+  bottom: 200px; left: -50px;
+}
+
+.blob-4 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #4466FF, transparent 70%);
+  bottom: -50px; right: -100px;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- HEADER ---- */
+.header {
+  text-align: center;
+  padding: 50px 0 48px;
+  position: relative;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 36px;
+  letter-spacing: -0.3px;
+}
+
+.brand-logo .ai-badge {
+  background: var(--gradient-brand);
+  color: white;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--purple);
+  background: var(--purple-dim);
+  border: 1px solid var(--border);
+  padding: 8px 22px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  animation: fadeDown 0.8s ease both;
+}
+
+.header h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 5.5vw, 52px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  letter-spacing: -1.5px;
+  animation: fadeDown 0.8s ease 0.1s both;
+}
+
+.header h1 .highlight {
+  color: var(--purple);
+}
+
+.header .subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  animation: fadeDown 0.8s ease 0.2s both;
+}
+
+.header-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-brand);
+  border-radius: 3px;
+  margin: 32px auto 0;
+}
+
+/* ---- SECTION ---- */
+.section {
+  margin-top: 52px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
+.section h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+  letter-spacing: -0.8px;
+}
+
+.section p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.section p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.purple-text {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/* ---- DETAIL CARD ---- */
+.detail-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-top: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.detail-row:first-child { padding-top: 0; }
+.detail-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.detail-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  min-width: 130px;
+}
+
+.detail-value {
+  font-size: 15px;
+  color: var(--text-primary);
+  text-align: right;
+  font-weight: 500;
+}
+
+/* ---- CREDENTIALS ---- */
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.credential-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.credential-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.credential-card:hover::before { opacity: 1; }
+
+.credential-card:hover {
+  border-color: var(--border);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(123, 63, 228, 0.08);
+}
+
+.credential-stat {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--purple);
+  margin-bottom: 6px;
+  letter-spacing: -1px;
+}
+
+.credential-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- ABOUT PHOTO ---- */
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 4px;
+}
+
+.photo-ring {
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  padding: 3px;
+}
+
+.photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.photo-placeholder {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-name-block h2 {
+  letter-spacing: -0.8px;
+}
+
+/* ---- SOCIAL PROOF ---- */
+.social-bar {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.social-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.social-pill:hover {
+  border-color: var(--border);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(123, 63, 228, 0.06);
+}
+
+.social-pill .num {
+  font-weight: 800;
+  color: var(--purple);
+}
+
+.social-pill .icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-pill .icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- INCLUDES LIST ---- */
+.includes-list {
+  margin-top: 20px;
+}
+
+.include-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.include-item:last-child { border-bottom: none; }
+
+.include-check {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.include-check svg {
+  width: 13px;
+  height: 13px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.include-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.include-text strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ---- METHODOLOGY CALLOUT ---- */
+.methodology-callout {
+  background: var(--gradient-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.methodology-callout::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--gradient-brand);
+}
+
+.methodology-callout h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.methodology-callout p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.methodology-callout .step-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.step-pill {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--purple);
+  background: rgba(123, 63, 228, 0.1);
+  padding: 6px 14px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.step-arrow {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ---- INVESTMENT ---- */
+.investment-wrapper {
+  margin-top: 28px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--gradient-brand);
+  padding: 2px;
+}
+
+.investment-inner {
+  background: white;
+  border-radius: 18px;
+  padding: 44px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.investment-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--gradient-soft);
+  pointer-events: none;
+}
+
+.investment-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.investment-amount {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(52px, 9vw, 72px);
+  font-weight: 900;
+  color: var(--text-primary);
+  position: relative;
+  margin-bottom: 8px;
+  letter-spacing: -3px;
+}
+
+.investment-per {
+  font-size: 15px;
+  color: var(--text-muted);
+  position: relative;
+}
+
+.investment-per span {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/* ---- ROI CALLOUT ---- */
+.roi-callout {
+  background: var(--purple-dim);
+  border-radius: 12px;
+  padding: 20px 28px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.roi-callout p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.roi-callout strong {
+  color: var(--purple);
+}
+
+/* ---- VALUE GRID ---- */
+.value-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.value-icon {
+  font-size: 22px;
+  min-width: 28px;
+  margin-top: 2px;
+}
+
+.value-item strong {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.value-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- TALLER AGENDA ---- */
+.agenda-block {
+  margin-top: 20px;
+}
+
+.agenda-item {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.agenda-item:last-child { border-bottom: none; }
+
+.agenda-time {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple);
+  min-width: 60px;
+  padding-top: 2px;
+}
+
+.agenda-content h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.agenda-content p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ---- TALLER DIVIDER ---- */
+.taller-divider {
+  margin: 56px 0;
+  text-align: center;
+  position: relative;
+}
+
+.taller-divider::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 3px;
+  background: var(--gradient-brand);
+  border-radius: 3px;
+}
+
+.taller-divider span {
+  position: relative;
+  background: white;
+  padding: 0 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+/* ---- INVESTMENT BREAKDOWN ---- */
+.investment-breakdown {
+  margin-top: 24px;
+}
+
+.inv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.inv-row:last-child { border-bottom: none; }
+
+.inv-row.total {
+  border-top: 2px solid var(--text-primary);
+  border-bottom: none;
+  padding-top: 20px;
+  margin-top: 4px;
+}
+
+.inv-name {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.inv-name strong {
+  color: var(--text-primary);
+}
+
+.inv-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.inv-row.total .inv-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.inv-row.total .inv-price {
+  font-size: 24px;
+  color: var(--purple);
+}
+
+.inv-per-person {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ---- ADD-ONS ---- */
+.addon-card {
+  background: var(--bg-soft);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-top: 20px;
+}
+
+.addon-card h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.addon-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.addon-price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+/* ---- DISCLAIMER ---- */
+.disclaimer-box {
+  background: var(--purple-dim);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  margin-top: 28px;
+}
+
+.disclaimer-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.disclaimer-box strong {
+  color: var(--purple);
+  font-style: normal;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.footer-brand {
+  margin-bottom: 16px;
+}
+
+.footer-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  letter-spacing: -0.5px;
+}
+
+.footer-title {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.validity {
+  margin-top: 28px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- PAGE BREAK ---- */
+.page-break {
+  page-break-before: always;
+  break-before: page;
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section:nth-child(2) { animation-delay: 0.05s; }
+.section:nth-child(3) { animation-delay: 0.1s; }
+.section:nth-child(4) { animation-delay: 0.15s; }
+.section:nth-child(5) { animation-delay: 0.2s; }
+.section:nth-child(6) { animation-delay: 0.25s; }
+.section:nth-child(7) { animation-delay: 0.3s; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 700px) {
+  .container { padding: 20px 16px; }
+  .header { padding: 36px 0 40px; }
+  .header h1 { font-size: 32px; letter-spacing: -1px; }
+  .header .subtitle { font-size: 14px; }
+  .badge { font-size: 10px; padding: 6px 16px; letter-spacing: 2px; }
+  .section { margin-top: 40px; }
+  .section h2 { font-size: 22px; }
+  .section p { font-size: 14px; }
+  .credentials-grid { grid-template-columns: 1fr; gap: 12px; }
+  .credential-card { padding: 20px; }
+  .credential-stat { font-size: 28px; }
+  .credential-desc { font-size: 12px; }
+  .detail-card { padding: 20px; }
+  .detail-row { flex-direction: column; gap: 4px; }
+  .detail-value { text-align: left; font-size: 14px; }
+  .detail-label { font-size: 11px; min-width: auto; }
+  .social-bar { flex-direction: column; }
+  .social-pill { font-size: 13px; padding: 10px 16px; }
+  .methodology-callout { padding: 20px 16px 20px 20px; }
+  .methodology-callout h3 { font-size: 15px; }
+  .methodology-callout p { font-size: 13px; }
+  .step-flow { gap: 6px; }
+  .step-pill { font-size: 11px; padding: 5px 12px; }
+  .step-arrow { display: none; }
+  .include-item { gap: 12px; padding: 14px 0; }
+  .include-text { font-size: 14px; }
+  .include-check { width: 22px; height: 22px; min-width: 22px; }
+  .investment-inner { padding: 32px 20px; }
+  .investment-amount { font-size: 48px; letter-spacing: -2px; }
+  .investment-per { font-size: 13px; }
+  .roi-callout { padding: 16px 20px; }
+  .roi-callout p { font-size: 13px; }
+  .footer-title { font-size: 12px; }
+  .footer-links { flex-direction: column; gap: 10px; }
+  .footer-link { font-size: 12px; }
+  .brand-logo { font-size: 16px; }
+  .brand-logo .ai-badge { font-size: 15px; padding: 2px 7px; }
+  .about-header { flex-direction: column; text-align: center; gap: 16px; }
+  .about-name-block { text-align: center; }
+  .photo-ring { width: 100px; height: 100px; min-width: 100px; }
+  .gradient-blob { opacity: 0.25; }
+  .blob-1 { width: 250px; height: 250px; }
+  .blob-2 { width: 200px; height: 200px; }
+  .blob-3 { width: 180px; height: 180px; }
+  .blob-4 { width: 200px; height: 200px; }
+  .agenda-item { flex-direction: column; gap: 6px; }
+  .agenda-time { min-width: auto; }
+}
+
+/* ---- CLIENT LOGOS ---- */
+.logos-section {
+  margin-top: 40px;
+}
+
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 28px 36px;
+  padding: 28px 20px;
+  background: var(--bg-soft);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+}
+
+.logo-item {
+  height: 40px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  filter: grayscale(30%);
+}
+
+.logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* ---- TESTIMONIALS ---- */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.testimonial-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 22px 24px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-family: 'Inter', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--purple);
+  opacity: 0.15;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  line-height: 1;
+}
+
+.testimonial-quote {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.testimonial-role {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.testimonial-rating .star {
+  color: #F5A623;
+  font-size: 13px;
+}
+
+/* ---- CONFERENCE CAROUSEL ---- */
+.carousel-wrapper {
+  position: relative;
+  margin-top: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: var(--bg-soft);
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  animation: carouselSlide 20s ease-in-out infinite;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.carousel-slide .slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 20px 16px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-light);
+  animation: dotPulse 40s ease-in-out infinite;
+}
+
+.carousel-dot:nth-child(1) { animation-delay: 0s; }
+.carousel-dot:nth-child(2) { animation-delay: -35s; }
+.carousel-dot:nth-child(3) { animation-delay: -30s; }
+.carousel-dot:nth-child(4) { animation-delay: -25s; }
+.carousel-dot:nth-child(5) { animation-delay: -20s; }
+.carousel-dot:nth-child(6) { animation-delay: -15s; }
+.carousel-dot:nth-child(7) { animation-delay: -10s; }
+.carousel-dot:nth-child(8) { animation-delay: -5s; }
+
+@keyframes carouselSlide {
+  0%, 10%       { transform: translateX(0); }
+  12.5%, 22.5%  { transform: translateX(-100%); }
+  25%, 35%      { transform: translateX(-200%); }
+  37.5%, 47.5%  { transform: translateX(-300%); }
+  50%, 60%      { transform: translateX(-400%); }
+  62.5%, 72.5%  { transform: translateX(-500%); }
+  75%, 85%      { transform: translateX(-600%); }
+  87.5%, 97%    { transform: translateX(-700%); }
+  100%          { transform: translateX(0); }
+}
+
+@keyframes dotPulse {
+  0%, 10%     { background: var(--purple); transform: scale(1.2); }
+  12.5%, 100% { background: var(--border-light); transform: scale(1); }
+}
+
+/* ---- LIGHTBOX ---- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-overlay img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+/* ---- URGENCY SECTION ---- */
+.urgency-callout {
+  background: linear-gradient(135deg, rgba(123,63,228,0.06), rgba(0,201,183,0.06));
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--purple);
+  border-radius: 14px;
+  padding: 28px 28px;
+  margin-top: 20px;
+}
+
+.urgency-callout h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.urgency-points {
+  list-style: none;
+  padding: 0;
+}
+
+.urgency-points li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  padding-left: 28px;
+  position: relative;
+}
+
+.urgency-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/* ---- GUARANTEE ---- */
+.guarantee-card {
+  background: linear-gradient(135deg, rgba(0,201,183,0.08), rgba(123,63,228,0.08));
+  border: 2px solid var(--cyan);
+  border-radius: 16px;
+  padding: 28px 28px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.guarantee-card .guarantee-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.guarantee-card h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.guarantee-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---- ROI CALC ---- */
+.roi-calc {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.roi-calc-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+}
+
+.roi-calc-item .roi-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--purple);
+  letter-spacing: -0.5px;
+}
+
+.roi-calc-item .roi-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .carousel-wrapper { aspect-ratio: 4 / 3.2; border-radius: 12px; }
+  .carousel-slide .slide-caption { font-size: 11px; padding: 24px 14px 12px; }
+  .roi-calc { grid-template-columns: 1fr; }
+  .roi-calc-item { padding: 14px 12px; }
+  .roi-calc-item .roi-num { font-size: 20px; }
+  .logos-grid { gap: 18px 24px; padding: 20px 16px; }
+  .logo-item { height: 30px; }
+  .testimonial-card { padding: 18px 16px; }
+  .testimonial-quote { font-size: 13px; }
+  .urgency-callout { padding: 20px 16px; }
+  .urgency-callout h3 { font-size: 16px; }
+  .urgency-points li { font-size: 13px; }
+  .guarantee-card { padding: 22px 18px; }
+  .guarantee-card h4 { font-size: 15px; }
+  .guarantee-card p { font-size: 13px; }
+  .inv-row { flex-direction: column; gap: 8px; }
+  .inv-price { text-align: left; }
+  .addon-card { padding: 18px 16px; }
+  .addon-card p { font-size: 13px; }
+  .taller-divider span { font-size: 14px; padding: 0 16px; }
+  .section-label { font-size: 10px; letter-spacing: 2.5px; }
+  .includes-list { gap: 0; }
+  .disclaimer-box { padding: 16px; }
+  .disclaimer-box p { font-size: 13px; }
+}
+
+@media (max-width: 380px) {
+  .header h1 { font-size: 28px; }
+  .investment-amount { font-size: 42px; }
+  .credential-stat { font-size: 24px; }
+  .logos-grid { gap: 14px 18px; }
+  .logo-item { height: 26px; }
+  .carousel-wrapper { aspect-ratio: 3 / 3; }
+  .roi-calc-item .roi-num { font-size: 18px; }
+  .guarantee-card .guarantee-icon { font-size: 28px; }
+}
+
+@media print {
+  .gradient-blob { display: none; }
+  .credential-card { border: 1px solid #ddd; }
+  .investment-wrapper { border: 2px solid #7B3FE4; background: none; }
+  .logo-item { filter: grayscale(0%); opacity: 0.8; }
+  .carousel-track { animation: none; transform: translateX(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- Gradient blobs -->
+<div class="gradient-blob blob-1"></div>
+<div class="gradient-blob blob-2"></div>
+<div class="gradient-blob blob-3"></div>
+<div class="gradient-blob blob-4"></div>
+
+<div class="content-wrapper">
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand-logo">The <span class="ai-badge">AI</span> Strategist</div>
+    <br><br>
+    <div class="badge">Propuesta de Taller Corporativo</div>
+    <h1>Soluciones de <span class="highlight">IA para GFR Media</span></h1>
+    <p class="subtitle">Talleres presenciales para los equipos de Ventas Comercial y Content Hub</p>
+    <div class="header-divider"></div>
+  </header>
+
+  <!-- RESUMEN DEL PROYECTO -->
+  <div class="section">
+    <div class="section-label">Resumen del Proyecto</div>
+    <h2>Dos talleres, un objetivo</h2>
+    <p>Programa de capacitación en <strong>Inteligencia Artificial aplicada</strong> diseñado exclusivamente para GFR Media, orientado a potenciar la productividad, optimizar flujos de trabajo y posicionar a sus equipos a la vanguardia de la transformación digital.</p>
+
+    <div class="detail-card">
+      <div class="detail-row">
+        <span class="detail-label">Cliente</span>
+        <span class="detail-value">GFR Media</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Contacto</span>
+        <span class="detail-value">Gabriella Irizarry Gutierrez</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Modalidad</span>
+        <span class="detail-value">Presencial</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Talleres</span>
+        <span class="detail-value">2 sesiones de 3 horas c/u</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Participantes</span>
+        <span class="detail-value">20 empleados (12 + 8)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TALLER 1: VENTAS COMERCIAL -->
+  <!-- ============================================ -->
+
+  <div class="taller-divider">
+    <span>Taller 1</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Taller de Ventas Comercial</div>
+    <h2>Soluciones de IA para Equipos de Ventas</h2>
+    <p>Adiestramiento práctico de 3 horas para el <strong>Área Comercial (Ventas)</strong> de GFR Media. Los participantes aprenderán a integrar herramientas de Inteligencia Artificial en su flujo de trabajo diario para investigar prospectos, generar propuestas, automatizar tareas repetitivas y cerrar más ventas.</p>
+
+    <div class="detail-card">
+      <div class="detail-row">
+        <span class="detail-label">Duración</span>
+        <span class="detail-value">3 horas</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Participantes</span>
+        <span class="detail-value">12 empleados</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Enfoque</span>
+        <span class="detail-value">IA aplicada a Ventas Comerciales*</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Plataforma Central</span>
+        <span class="detail-value">Claude (web, desktop, Skills, Cowork)</span>
+      </div>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; font-style: italic;">*El contenido final podrá ajustarse en base a los resultados del formulario de diagnóstico enviado a los participantes previo al taller.</p>
+  </div>
+
+  <!-- AGENDA TALLER 1 -->
+  <div class="section">
+    <div class="section-label">Agenda del Taller</div>
+    <h2>Contenido — Ventas Comercial</h2>
+
+    <div class="agenda-block">
+      <div class="agenda-item">
+        <span class="agenda-time">30 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 1 — Curiosidad + Panorama de IA</h4>
+          <p>Panorama de la industria de la inteligencia artificial para entender cuáles son las plataformas líderes y por qué. Demostración en vivo del "antes y después" con IA: tomar una tarea real de ventas y resolverla con y sin IA para visualizar el impacto inmediato. Introducción a las herramientas relevantes (ChatGPT, Claude, Perplexity, Gemini).</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">40 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 2 — Investigación de Clientes y Prospectos</h4>
+          <p>Cómo usar IA para investigar empresas antes de una reunión, analizar industrias, identificar pain points del prospecto y preparar talking points personalizados en minutos. Ejercicio práctico: cada participante prepara un brief de un cliente real usando IA.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">50 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 3 — Propuestas y Comunicación Comercial</h4>
+          <p>Generar emails de prospección personalizados, propuestas comerciales, follow-ups estratégicos y presentaciones de ventas con IA. Prompt engineering aplicado a ventas: cómo pedirle a la IA exactamente lo que necesitas para obtener resultados profesionales.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">40 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 4 — Optimización del Día a Día</h4>
+          <p>Automatizar tareas repetitivas: resúmenes de reuniones, reportes de pipeline, análisis de datos de clientes. Flujos de trabajo prácticos con Claude que pueden implementar al día siguiente.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">20 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 5 — Q&A + Plan de Acción Personal</h4>
+          <p>Espacio de preguntas y respuestas. Cada participante define 3 acciones concretas para implementar IA en su rutina de ventas inmediatamente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TALLER 2: CONTENT HUB / REDACCIÓN -->
+  <!-- ============================================ -->
+
+  <div class="taller-divider" style="margin-top: 64px;">
+    <span>Taller 2</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Taller de Content Hub</div>
+    <h2>IA para Creación de Contenido y Redacción</h2>
+    <p>Adiestramiento práctico de 3 horas para el equipo de <strong>Content Hub</strong> de GFR Media. Los participantes aprenderán a utilizar IA como co-writer, dominar el content repurposing multiplataforma, y optimizar su flujo editorial completo — desde la investigación hasta la publicación.</p>
+
+    <div class="detail-card">
+      <div class="detail-row">
+        <span class="detail-label">Duración</span>
+        <span class="detail-value">3 horas</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Participantes</span>
+        <span class="detail-value">8 empleados</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Enfoque</span>
+        <span class="detail-value">IA aplicada a Redacción y Contenido*</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Plataforma Central</span>
+        <span class="detail-value">Claude (web, desktop, Skills, Cowork)</span>
+      </div>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; font-style: italic;">*El contenido final podrá ajustarse en base a los resultados del formulario de diagnóstico enviado a los participantes previo al taller.</p>
+  </div>
+
+  <!-- AGENDA TALLER 2 -->
+  <div class="section">
+    <div class="section-label">Agenda del Taller</div>
+    <h2>Contenido — Content Hub / Redacción</h2>
+
+    <div class="agenda-block">
+      <div class="agenda-item">
+        <span class="agenda-time">30 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 1 — Curiosidad + Panorama de IA</h4>
+          <p>Panorama de la industria de la inteligencia artificial para entender cuáles son las plataformas líderes y por qué. Demo en vivo: transformar una nota de prensa en contenido para 5 plataformas diferentes en minutos, organizado en un dashboard visual. Herramientas clave para redactores y creadores de contenido.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">50 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 2 — Redacción Asistida con IA</h4>
+          <p>Cómo usar IA como co-writer sin perder tu voz editorial. Generar borradores, titulares, leads y variaciones de copy. Edición, corrección de estilo y adaptación de tono. Cómo crear Claude Skills para que la IA siempre replique tu estilo de redacción. Ejercicio: cada participante trae un texto real y lo mejora con IA.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">40 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 3 — Content Repurposing y Multi-plataforma</h4>
+          <p>Convertir un artículo en posts de redes sociales, newsletters, scripts de video y más. Optimización SEO con IA. Introducción al nuevo SEO: AEO (Answer Engine Optimization) y GEO (Generative Engine Optimization). Cómo aumentar la posibilidad de que las IAs citen los artículos de GFR / El Nuevo Día en sus respuestas.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">40 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 4 — Optimización del Flujo Editorial</h4>
+          <p>Investigación y fact-checking acelerado con IA. Brainstorming de ideas y calendarios editoriales. Automatización de tareas repetitivas del día a día del Content Hub.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-time">20 min</span>
+        <div class="agenda-content">
+          <h4>Bloque 5 — Q&A + Plan de Acción Personal</h4>
+          <p>Espacio de preguntas y respuestas. Cada participante define su flujo de trabajo personal con IA para implementar inmediatamente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ABOUT ELSA -->
+  <!-- ============================================ -->
+
+  <div class="section page-break">
+    <div class="section-label">Sobre la Facilitadora</div>
+
+    <div class="about-header">
+      <div class="photo-ring">
+        <div class="photo-inner">
+          <img class="photo-img" src="foto-elsa.png" alt="Elsa Del Pino">
+        </div>
+      </div>
+      <div class="about-name-block">
+        <h2 style="margin-bottom:4px;">Elsa Del Pino</h2>
+        <p class="purple-text" style="margin-bottom:0; font-size:14px;">Directora de Innovación y Desarrollo IA</p>
+        <p style="margin-bottom:0; font-size:13px; color:var(--text-muted);">Puerto Rico Computer Services</p>
+      </div>
+    </div>
+
+    <p style="margin-top:20px;"><strong>Estratega de Inteligencia Artificial y Neuromarketing</strong> con trayectoria internacional entre Puerto Rico y España. Lidera la innovación en IA dentro de la compañía pionera y líder de tecnología en la isla.</p>
+    <p>Con formación en <strong>Publicidad y Relaciones Públicas</strong> de la Universidad de Puerto Rico y una <strong>Maestría en Neuromarketing</strong> de la Universitat Politècnica de València (España), Elsa fusiona el marketing, la ciencia del comportamiento del consumidor y la inteligencia artificial para diseñar soluciones que generan resultados medibles para empresas.</p>
+    <p>Su enfoque combina el rigor académico — liderando estudios con eye-tracking, EEG, GSR y facial coding — con la ejecución práctica de herramientas de IA aplicadas a ventas, automatización de procesos comerciales y desarrollo de chatbots inteligentes.</p>
+  </div>
+
+  <!-- CREDENTIALS -->
+  <div class="section">
+    <div class="section-label">Credenciales y Trayectoria</div>
+
+    <div class="credentials-grid">
+      <div class="credential-card">
+        <div class="credential-stat">520K+</div>
+        <div class="credential-desc">Consultas procesadas por chatbot multilingüe desarrollado para la Comisión Estatal de Elecciones de Puerto Rico.</div>
+      </div>
+      <div class="credential-card">
+        <div class="credential-stat">1,137%</div>
+        <div class="credential-desc">ROI documentado en proyecto de chatbot electoral con 95% de satisfacción de usuario y 27,000+ horas ahorradas.</div>
+      </div>
+      <div class="credential-card">
+        <div class="credential-stat">1,500+</div>
+        <div class="credential-desc">Profesionales adiestrados en IA aplicada a negocios a través de talleres, bootcamps y conferencias en mercados de habla hispana.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENT LOGOS -->
+  <div class="section logos-section">
+    <div class="section-label">Empresas que han confiado en nosotros</div>
+    <p>Organizaciones en Puerto Rico y el Caribe que han capacitado a sus equipos con nuestros talleres y conferencias de IA aplicada.</p>
+    <div class="logos-grid">
+      <img class="logo-item" src="logos/1.png" alt="Medtronic">
+      <img class="logo-item" src="logos/2.png" alt="Stellantis">
+      <img class="logo-item" src="logos/6.png" alt="B. Fernandez & Hnos.">
+      <img class="logo-item" src="logos/7.png" alt="Comisión Estatal de Elecciones">
+      <img class="logo-item" src="logos/8.png" alt="Departamento de la Familia, Gobierno de PR">
+      <img class="logo-item" src="logos/10.png" alt="SME - Asociación de Ejecutivos de Ventas y Mercadeo de PR">
+      <img class="logo-item" src="logos/3.png" alt="NUC University">
+      <img class="logo-item" src="logos/9.png" alt="SM Editorial">
+      <img class="logo-item" src="logos/5.png" alt="Laboratorios Borinquen">
+      <img class="logo-item" src="logos/4.png" alt="CUD Puerto Rico">
+      <img class="logo-item" src="logos/11.png" alt="PRC">
+      <img class="logo-item" src="logos/12.png" alt="P2P Marketing Agency">
+      <img class="logo-item" src="logos/13.png" alt="Fuse Global">
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="section">
+    <div class="section-label">Presencia Digital</div>
+    <p>Referente en IA aplicada a negocios en la comunidad hispanohablante, con crecimiento orgánico y una audiencia comprometida de ejecutivos, emprendedores y profesionales de ventas.</p>
+
+    <div class="social-bar">
+      <a href="https://www.instagram.com/elsadelpino_/" target="_blank" style="text-decoration:none;">
+      <div class="social-pill">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="#7B3FE4"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></span>
+        <span><span class="num">28.4K</span> seguidores · @elsadelpino_</span>
+      </div>
+      </a>
+      <a href="https://www.linkedin.com/in/elsa-del-pino-744a27204" target="_blank" style="text-decoration:none;">
+      <div class="social-pill">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="#7B3FE4"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        <span>LinkedIn · Elsa Del Pino</span>
+      </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section">
+    <div class="section-label">Lo que dicen los participantes</div>
+    <h2>Testimonios Reales</h2>
+    <p>Evaluaciones de participantes de talleres recientes de IA — todos con consentimiento para publicación.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-quote">En los pasados 2 años he asistido a varios talleres de AI... El de ustedes ha sido el MEJOR y más práctico by far. Éxitos y Bendiciones.</p>
+        <div class="testimonial-author">Leonel Torres Alicea</div>
+        <div class="testimonial-role">La Torre Agricola · Empresario</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-quote">Evento costo-efectivo con alto retorno de inversión. Siento que recibí muchísimo en relación al costo. Lo más importante fue regenerar en mí esa confianza frente a tendencias nuevas como AI.</p>
+        <div class="testimonial-author">Carlos Díaz</div>
+        <div class="testimonial-role">Becas y Atletas · Fundador</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-quote">Ya casi termino de crear una página para nuestros vendedores que les ayuda a crear cotizaciones automatizadas desde su computadora o teléfono. Me abrió la mente para utilizarlo en la empresa.</p>
+        <div class="testimonial-author">Nashwa Santana Sarieh</div>
+        <div class="testimonial-role">Enertek Del Caribe</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-quote">Excelente, muy profesionales. La calidad de la información y recursos brindados fueron a otro nivel. Una logística muy bien preparada.</p>
+        <div class="testimonial-author">Jazmin O'Connors Caquias</div>
+        <div class="testimonial-role">NUC University · Ponce</div>
+      </div>
+    </div>
+
+    <div class="roi-callout" style="margin-top:20px; text-align:center;">
+      <p style="margin:0;"><strong>Satisfacción promedio: 5/5</strong> · Recomendación promedio: <strong>10/10</strong> · 100% reporta que superó o cumplió expectativas</p>
+    </div>
+  </div>
+
+  <!-- CONFERENCE CAROUSEL -->
+  <div class="section">
+    <div class="section-label">En acción</div>
+    <h2>Conferencias y Talleres</h2>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="fotos/conferencia-ia.jpg" alt="Elsa presentando sobre Claude y ElevenLabs en tarima con pantalla LED" style="object-position: center 70%;" onclick="openLightbox(this)">
+          <div class="slide-caption">Conferencia de IA — Demostraciones en vivo con Claude y ElevenLabs</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/sme-sales-summit.jpg" alt="Elsa en el SME Sales Summit" style="object-position: center 80%;" onclick="openLightbox(this)">
+          <div class="slide-caption">SME Sales Summit — "Multiply Yourself: AI Tools Every Seller Needs"</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/nuc-university.jpg" alt="Elsa presentando en NUC University" style="object-position: center 40%;" onclick="openLightbox(this)">
+          <div class="slide-caption">NUC University — Taller de IA aplicada a negocios</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/audiencia-conferencia.jpg" alt="Audiencia masiva en conferencia" style="object-position: center center;" onclick="openLightbox(this)">
+          <div class="slide-caption">Conferencias con audiencias de cientos de profesionales y empresarios</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/demo-chatgpt.jpg" alt="Elsa presentando sobre ChatGPT" style="object-position: center 55%;" onclick="openLightbox(this)">
+          <div class="slide-caption">Demos en vivo de plataformas líderes de IA — ChatGPT, Claude, Perplexity</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/roosevelt-roads.jpg" alt="Elsa presentando en Roosevelt Roads" style="object-position: center 30%;" onclick="openLightbox(this)">
+          <div class="slide-caption">Conferencia en Roosevelt Roads — IA para profesionales</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/congreso-educativo-sm.jpg" alt="Elsa en el Congreso Educativo SM 2026" style="object-position: center 50%;" onclick="openLightbox(this)">
+          <div class="slide-caption">Congreso Educativo SM 2026 — IA aplicada para educadores</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="fotos/evento-grande.jpg" alt="Audiencia en conferencia de IA" style="object-position: center center;" onclick="openLightbox(this)">
+          <div class="slide-caption">Eventos con cientos de asistentes en Puerto Rico y el Caribe</div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="section">
+    <div class="section-label">Metodología</div>
+    <h2>Proceso de Personalización</h2>
+    <p>Para garantizar que cada minuto de los talleres aporte valor real a los equipos de GFR Media, se implementará un proceso de diagnóstico y diseño en tres fases:</p>
+
+    <div class="methodology-callout">
+      <h3>FASE 1 — Diagnóstico</h3>
+      <p>Encuesta digital enviada a los participantes de ambos equipos para identificar sus retos específicos, herramientas actuales, nivel de familiaridad con IA y áreas donde la tecnología puede generar impacto inmediato. Reunión de alineación con Gabriella para validar prioridades.</p>
+    </div>
+
+    <div class="methodology-callout" style="margin-top: 16px;">
+      <h3>FASE 2 — Diseño del Taller</h3>
+      <p>Con la data del diagnóstico, se diseña el contenido <strong>100% personalizado</strong> para cada equipo. Se envía outline para aprobación antes de la ejecución, asegurando que el contenido responda directamente a las necesidades reales de GFR Media.</p>
+    </div>
+
+    <div class="methodology-callout" style="margin-top: 16px;">
+      <h3>FASE 3 — Ejecución</h3>
+      <p>Talleres presenciales interactivos con demostraciones en vivo, ejercicios prácticos con casos reales de GFR Media, y plan de acción individual para cada participante.</p>
+      <div class="step-flow">
+        <span class="step-pill">1. Encuesta</span>
+        <span class="step-arrow">→</span>
+        <span class="step-pill">2. Alineación</span>
+        <span class="step-arrow">→</span>
+        <span class="step-pill">3. Diseño</span>
+        <span class="step-arrow">→</span>
+        <span class="step-pill">4. Aprobación</span>
+        <span class="step-arrow">→</span>
+        <span class="step-pill">5. Talleres</span>
+      </div>
+    </div>
+
+    <div class="roi-callout" style="margin-top: 20px;">
+      <p>Estos talleres habilitarán a sus equipos de ventas y contenido con herramientas de IA que les permitirán <strong>vender más, crear contenido de mayor impacto, optimizar flujos de trabajo y posicionar a GFR Media a la vanguardia de la transformación digital en medios</strong> — traducido directamente en mayor productividad y competitividad.</p>
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="section">
+    <div class="section-label">¿Qué incluye?</div>
+    <h2>Alcance de los Talleres</h2>
+
+    <div class="includes-list">
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Formulario de diagnóstico pre-taller</strong> — Encuesta digital enviada a los participantes de ambos equipos para identificar necesidades, retos y oportunidades del día a día.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Reunión de alineación</strong> — Sesión con el equipo de GFR Media para validar prioridades y afinar el contenido de los talleres.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>2 talleres presenciales 100% customizados (3 horas c/u)</strong> — Contenido diseñado específicamente para los equipos de Ventas Comercial y Content Hub de GFR Media.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Demostraciones en vivo de herramientas de IA</strong> — Ejemplos prácticos y aplicables que los participantes pueden implementar desde el día siguiente.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Ejercicios prácticos con casos reales</strong> — Los participantes trabajarán con sus propios datos, clientes y contenido durante el taller.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Recursos impresos y digitales para cada participante</strong> — Guía con herramientas, prompts y estrategias cubiertos durante los talleres.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Desarrollo de plan piloto de implementación de IA</strong> — Plan de acción personalizado para que cada equipo comience a integrar IA de forma inmediata.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Preparación y personalización del contenido</strong> — Análisis de las respuestas del diagnóstico y diseño de presentaciones adaptadas al contexto de GFR Media.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="include-text"><strong>Sesión Q&A en cada taller</strong> — Espacio para preguntas de los participantes al final de cada sesión.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY NOW - URGENCY -->
+  <div class="section">
+    <div class="section-label">¿Por qué ahora?</div>
+    <h2>La ventana de oportunidad es hoy</h2>
+
+    <div class="urgency-callout">
+      <h3>El mercado no espera — y la competencia ya se está moviendo</h3>
+      <ul class="urgency-points">
+        <li>Las empresas de medios que adoptan IA están reportando <strong>incrementos de 30-40% en productividad</strong> en sus equipos de contenido y ventas.</li>
+        <li>Competidores directos en el mercado de Puerto Rico ya están explorando herramientas de IA para optimizar sus operaciones comerciales y editoriales.</li>
+        <li>Las herramientas de IA evolucionan semanalmente — <strong>cada semana que pasa sin capacitación es una semana donde la brecha competitiva se amplía</strong>.</li>
+        <li>Los equipos que adoptan IA temprano desarrollan una ventaja compuesta: no solo son más productivos hoy, sino que aprenden a adaptarse más rápido a cada nueva herramienta que surge.</li>
+      </ul>
+    </div>
+
+    <div class="roi-callout" style="margin-top:16px;">
+      <p><strong>GFR Media tiene la oportunidad de ser el primer grupo de medios en Puerto Rico</strong> con equipos de ventas y contenido formalmente capacitados en IA aplicada — un diferenciador ante clientes, anunciantes y talento.</p>
+    </div>
+  </div>
+
+  <!-- ROI ESTIMATE FOR GFR MEDIA -->
+  <div class="section">
+    <div class="section-label">Retorno de la Inversión</div>
+    <h2>Impacto proyectado para GFR Media</h2>
+    <p>Estimación conservadora basada en resultados documentados de talleres anteriores y benchmarks de la industria.</p>
+
+    <div class="roi-calc">
+      <div class="roi-calc-item">
+        <div class="roi-num">5 hrs</div>
+        <div class="roi-label">Ahorro semanal estimado por empleado con IA</div>
+      </div>
+      <div class="roi-calc-item">
+        <div class="roi-num">100 hrs</div>
+        <div class="roi-label">Horas semanales recuperadas (20 empleados)</div>
+      </div>
+      <div class="roi-calc-item">
+        <div class="roi-num">5,200 hrs</div>
+        <div class="roi-label">Horas anuales recuperadas para GFR Media</div>
+      </div>
+    </div>
+
+    <div class="methodology-callout" style="margin-top:16px;">
+      <h3>Traducido en números</h3>
+      <p>Si el costo promedio por hora de un empleado es ~$25, las <strong>5,200 horas recuperadas equivalen a ~$130,000 anuales</strong> en productividad recapturada — un retorno de <strong>más de 21x sobre la inversión de $6,000</strong>.</p>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:8px; margin-bottom:0;">*Estimación conservadora. Resultados varían según adopción individual y complejidad de tareas.</p>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-box">
+    <p><strong>Nota importante:</strong> Todo el contenido de ambos talleres es susceptible a cambios, ya que se enviará una encuesta de diagnóstico para determinar los verdaderos retos de los empleados y así adaptar el contenido para responder a sus necesidades reales.</p>
+  </div>
+
+  <!-- INVESTMENT -->
+  <div class="section">
+    <div class="section-label">Inversión</div>
+
+    <div class="investment-wrapper">
+      <div class="investment-inner">
+        <div class="investment-label">Inversión Total del Proyecto</div>
+        <div class="investment-amount">$6,000</div>
+        <div class="investment-per">Equivalente a <span>$300 por empleado</span> para 20 participantes</div>
+      </div>
+    </div>
+
+    <!-- Breakdown -->
+    <div class="detail-card" style="margin-top: 20px;">
+      <div class="inv-row">
+        <div>
+          <div class="inv-name"><strong>Taller 1:</strong> Soluciones de IA para Ventas</div>
+          <div class="inv-per-person">12 empleados · 3 horas · ~$250 por empleado</div>
+        </div>
+        <div class="inv-price">$3,000</div>
+      </div>
+      <div class="inv-row">
+        <div>
+          <div class="inv-name"><strong>Taller 2:</strong> IA para Contenido y Redacción</div>
+          <div class="inv-per-person">8 empleados · 3 horas · ~$375 por empleado</div>
+        </div>
+        <div class="inv-price">$3,000</div>
+      </div>
+      <div class="inv-row total">
+        <div class="inv-name">Total del Proyecto</div>
+        <div class="inv-price" style="color: var(--purple);">$6,000</div>
+      </div>
+    </div>
+
+    <div class="detail-card" style="margin-top: 16px;">
+      <div class="detail-row">
+        <span class="detail-label">Método de pago</span>
+        <span class="detail-value">Cheque / Transferencia bancaria</span>
+      </div>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="addon-card">
+      <h4>Add-On Disponible</h4>
+      <p><strong>2 sesiones de seguimiento online (60 min c/u)</strong> — Resolución de dudas, demos avanzados y acompañamiento en la implementación. <span class="addon-price">Total — $400</span></p>
+      <p style="margin-top: 8px; font-size: 12px; color: var(--text-muted); font-style: italic;">*Servicio se puede añadir posterior a los talleres.</p>
+    </div>
+
+    <!-- Value Proposition -->
+    <div class="methodology-callout" style="margin-top: 24px;">
+      <h3>¿Qué obtiene GFR Media con esta inversión?</h3>
+      <p style="margin-bottom: 16px;">Cada empleado saldrá equipado con herramientas de IA que transformarán su desempeño profesional:</p>
+      <div class="value-grid">
+        <div class="value-item">
+          <span class="value-icon">⚡</span>
+          <div>
+            <strong>Ahorro de tiempo masivo</strong>
+            <p style="font-size:13px; margin:4px 0 0;">IA que permite completar en minutos tareas que antes tomaban horas — desde investigar prospectos hasta reescribir contenido para múltiples plataformas.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🎯</span>
+          <div>
+            <strong>Mayor efectividad comercial</strong>
+            <p style="font-size:13px; margin:4px 0 0;">Vendedores equipados con IA para personalizar propuestas, anticipar objeciones y cerrar más negocios con mayor confianza y rapidez.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🔄</span>
+          <div>
+            <strong>Productividad multiplicada en contenido</strong>
+            <p style="font-size:13px; margin:4px 0 0;">Un artículo se transforma en contenido para 5+ plataformas. El equipo de Content Hub producirá más, mejor y con su voz editorial intacta.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">📊</span>
+          <div>
+            <strong>Ventaja competitiva en medios</strong>
+            <p style="font-size:13px; margin:4px 0 0;">GFR Media se posiciona como líder en adopción de IA en la industria de medios en Puerto Rico, con equipos que dominan herramientas que la competencia aún no implementa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-card">
+    <div class="guarantee-icon">🛡️</div>
+    <h4>Compromiso de Valor</h4>
+    <p>Si al finalizar los talleres el equipo de GFR Media no siente que obtuvo herramientas prácticas y aplicables para su trabajo diario, ofrezco una <strong>sesión de seguimiento adicional sin costo</strong> para asegurar que cada participante tenga claridad total sobre cómo implementar lo aprendido.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="brand-logo" style="justify-content:center;">The <span class="ai-badge">AI</span> Strategist</div>
+    </div>
+    <div class="footer-name">Elsa Del Pino</div>
+    <div class="footer-title">Directora de Innovación y Desarrollo IA — Puerto Rico Computer Services<br>AI Automation & Neuromarketing Strategist</div>
+    <div class="footer-links">
+      <span class="footer-link">✉️ elsa.ai.strategist@gmail.com</span>
+      <span class="footer-link">📱 (787) 530-0042</span>
+      <a href="https://www.instagram.com/elsadelpino_/" target="_blank" class="footer-link" style="text-decoration:none;">📷 @elsadelpino_</a>
+      <a href="https://www.linkedin.com/in/elsa-del-pino-744a27204" target="_blank" class="footer-link" style="text-decoration:none;">💼 LinkedIn</a>
+    </div>
+    <div class="validity">Propuesta válida por 5 días · Marzo 2026</div>
+  </footer>
+
+</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+const carousel = document.querySelector('.carousel-track');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+
+function openLightbox(img) {
+  // Pause carousel
+  carousel.style.animationPlayState = 'paused';
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  const caption = img.closest('.carousel-slide').querySelector('.slide-caption');
+  lightboxCaption.textContent = caption ? caption.textContent : '';
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e.target === lightboxImg) return;
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+  carousel.style.animationPlayState = 'running';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+    closeLightbox(e);
+  }
+});
+</script>
+
+</body>
+</html>
