@@ -899,28 +899,52 @@ body {
   margin-top: 40px;
 }
 
-.logos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 28px 36px;
-  padding: 28px 20px;
-  background: var(--bg-soft);
-  border-radius: 16px;
-  border: 1px solid var(--border-light);
-}
+/* logos-grid replaced by logos-marquee */
 
 .logo-item {
-  height: 40px;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-  filter: grayscale(30%);
+  height: 44px;
+  opacity: 0.45;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: grayscale(100%);
+  cursor: pointer;
 }
 
 .logo-item:hover {
   opacity: 1;
-  filter: grayscale(0%);
+  filter: grayscale(0%) drop-shadow(0 4px 12px rgba(123, 63, 228, 0.25));
+  transform: scale(1.12);
+}
+
+.logos-grid {
+  animation: none;
+}
+
+/* Infinite scroll animation for logos */
+.logos-track {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  animation: scrollLogos 25s linear infinite;
+  width: max-content;
+}
+
+.logos-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logos-marquee {
+  overflow: hidden;
+  padding: 28px 0;
+  background: var(--bg-soft);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
 /* ---- TESTIMONIALS ---- */
@@ -1299,6 +1323,8 @@ body {
   <header class="header">
     <div class="brand-logo">The <span class="ai-badge">AI</span> Strategist</div>
     <br><br>
+    <img src="logo-gfr.png" alt="GFR Media" style="height:40px; margin-bottom:16px; opacity:0.85;">
+    <br>
     <div class="badge">Propuesta para GFR Media</div>
     <h1>Adiestramientos Profesionales de <span class="highlight">Inteligencia Artificial</span></h1>
     <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
@@ -1541,22 +1567,38 @@ body {
 
   <!-- CLIENT LOGOS -->
   <div class="section logos-section">
-    <div class="section-label">Empresas que han confiado en nosotros</div>
+    <div class="section-label">Empresas que han confiado en Elsa</div>
     <p>Organizaciones en Puerto Rico y el Caribe que han capacitado a sus equipos con nuestros talleres y conferencias de IA aplicada.</p>
-    <div class="logos-grid">
-      <img class="logo-item" src="logos/1.png" alt="Medtronic">
-      <img class="logo-item" src="logos/2.png" alt="Stellantis">
-      <img class="logo-item" src="logos/6.png" alt="B. Fernandez & Hnos.">
-      <img class="logo-item" src="logos/7.png" alt="Comisión Estatal de Elecciones">
-      <img class="logo-item" src="logos/8.png" alt="Departamento de la Familia, Gobierno de PR">
-      <img class="logo-item" src="logos/10.png" alt="SME - Asociación de Ejecutivos de Ventas y Mercadeo de PR">
-      <img class="logo-item" src="logos/3.png" alt="NUC University">
-      <img class="logo-item" src="logos/9.png" alt="SM Editorial">
-      <img class="logo-item" src="logos/5.png" alt="Laboratorios Borinquen">
-      <img class="logo-item" src="logos/4.png" alt="CUD Puerto Rico">
-      <img class="logo-item" src="logos/11.png" alt="PRC">
-      <img class="logo-item" src="logos/12.png" alt="P2P Marketing Agency">
-      <img class="logo-item" src="logos/13.png" alt="Fuse Global">
+    <div class="logos-marquee">
+      <div class="logos-track">
+        <img class="logo-item" src="logos/1.png" alt="Medtronic">
+        <img class="logo-item" src="logos/2.png" alt="Stellantis">
+        <img class="logo-item" src="logos/6.png" alt="B. Fernandez & Hnos.">
+        <img class="logo-item" src="logos/7.png" alt="Comisión Estatal de Elecciones">
+        <img class="logo-item" src="logos/8.png" alt="Departamento de la Familia, Gobierno de PR">
+        <img class="logo-item" src="logos/10.png" alt="SME - Asociación de Ejecutivos de Ventas y Mercadeo de PR">
+        <img class="logo-item" src="logos/3.png" alt="NUC University">
+        <img class="logo-item" src="logos/9.png" alt="SM Editorial">
+        <img class="logo-item" src="logos/5.png" alt="Laboratorios Borinquen">
+        <img class="logo-item" src="logos/4.png" alt="CUD Puerto Rico">
+        <img class="logo-item" src="logos/11.png" alt="PRC">
+        <img class="logo-item" src="logos/12.png" alt="P2P Marketing Agency">
+        <img class="logo-item" src="logos/13.png" alt="Fuse Global">
+        <!-- Duplicados para loop infinito -->
+        <img class="logo-item" src="logos/1.png" alt="Medtronic">
+        <img class="logo-item" src="logos/2.png" alt="Stellantis">
+        <img class="logo-item" src="logos/6.png" alt="B. Fernandez & Hnos.">
+        <img class="logo-item" src="logos/7.png" alt="Comisión Estatal de Elecciones">
+        <img class="logo-item" src="logos/8.png" alt="Departamento de la Familia, Gobierno de PR">
+        <img class="logo-item" src="logos/10.png" alt="SME - Asociación de Ejecutivos de Ventas y Mercadeo de PR">
+        <img class="logo-item" src="logos/3.png" alt="NUC University">
+        <img class="logo-item" src="logos/9.png" alt="SM Editorial">
+        <img class="logo-item" src="logos/5.png" alt="Laboratorios Borinquen">
+        <img class="logo-item" src="logos/4.png" alt="CUD Puerto Rico">
+        <img class="logo-item" src="logos/11.png" alt="PRC">
+        <img class="logo-item" src="logos/12.png" alt="P2P Marketing Agency">
+        <img class="logo-item" src="logos/13.png" alt="Fuse Global">
+      </div>
     </div>
   </div>
 
